@@ -8,11 +8,15 @@ import {
   Flex,
   Spacer,
   VStack,
+  Link,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "./framer";
 import { foods } from "./foodsTestData";
 import StarRating from "../components/StarRating";
+
+//TODO add hyper link to restaurant card, allowing user to access restaurant page
+//TODO Functionality to click on card and display review description
 
 const RestaurantListPage = () => {
   return (
