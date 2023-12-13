@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# FoodieBoy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  A website aimed to help others find good food in NOVA.
 
-Currently, two official plugins are available:
+  ## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - Node.js (version 18)
+  - NPM
 
-## Expanding the ESLint configuration
+  ## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  1. Clone the repository:
 
-- Configure the top-level `parserOptions` property like this:
+    ```bash
+    git clone git@github.com:dangphung4/foodieboy.git
+    ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+  2. Install dependencies:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    ```bash
+    cd foodieboy
+    npm install
+    ```
+
+  3. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+  4. Open your browser and visit `http://localhost:5174` to see the app.
+
+  ## Folder Structure
+
+  Coming Soon...
+
+  ## Available Scripts
+
+  In the project directory, you can run:
+
+  - `npm run dev`: Starts the development server.
+  - `npm build`: Builds the app for production.
+  - `npm serve`: Serves the production build locally.
+  - `npm test`: Runs the tests.
+  - `npm lint`: Lints the code.
+  - `npm format`: Formats the code.
+
+  ## Built With
+
+  - [React](https://reactjs.org/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [Vite](https://vitejs.dev/)
+
+  ## Contributing
+
+   Haven't decided yet...
+   
+  ## License
+
+  This project is licensed under the [MIT License](LICENSE).

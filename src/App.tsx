@@ -1,5 +1,5 @@
 // App.js
-import * as React from "react";
+import * as React from "react"
 import {
   ChakraProvider,
   Flex,
