@@ -1,26 +1,22 @@
-// App.js
 import * as React from "react";
 import {
   ChakraProvider,
   Flex,
-  VStack,
   Box,
   Link,
   Spacer,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
-import { AnimatePresence } from "framer-motion";
-import HomePage from "./Views/HomePage";
-import FoodPickerPage from "./Views/FoodPickerPage";
+import AnimatedRoutes from "./AnimatedRoutes";
 import MoodIndigoTheme from "./theme";
-import FoodButton from "./components/FoodButton";
 import ThemeToggleIcon from "./components/ThemeToggleIcon";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link as RouterLink,
+  useLocation,
 } from "react-router-dom";
 
 function App() {
@@ -28,6 +24,7 @@ function App() {
   const linkColor = useColorModeValue("red.200", "blue");
   const bg = useColorModeValue("red.500", "red.200");
 
+  
   return (
     <ChakraProvider theme={MoodIndigoTheme}>
       <Router>
@@ -53,15 +50,9 @@ function App() {
           direction="column"
           minHeight="100vh"
           padding="4"
-          // Make sure the content starts below the header
-          // You can adjust the `pt` value as per your header height
           pt={{ base: "16", md: "20" }}
         >
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/food" element={<FoodPickerPage />} />
-            {/* <Route path="/page2" element={<PageTwo />} /> */}
-          </Routes>
+          <AnimatedRoutes />
         </Flex>
       </Router>
     </ChakraProvider>
