@@ -43,16 +43,16 @@ function App() {
               FoodieBoy
             </Link>
             <Link as={RouterLink} to="/food/list" marginRight="4">
-              Food Catalog
+            Restaurants
             </Link>
           </Box>
           <ThemeToggleIcon />
         </Flex>
         <Flex
           direction="column"
-          minHeight="100vh"
+          // minHeight="100vh"
           padding="4"
-          pt={{ base: "16", md: "20" }}
+          // pt={{ base: "16", md: "20" }}
         >
           <AnimatedRoutes />
         </Flex>
