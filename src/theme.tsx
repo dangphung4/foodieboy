@@ -18,27 +18,29 @@ const MoodIndigoTheme = extendTheme({
   },
   components: {
     Link: {
-      // baseStyle, sizes, variants, etc. can be customized here
       baseStyle: (props: { colorMode: string; }) => ({
         color: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
       }),
     },
+    Flex: {
+      baseStyle: (props: { colorMode: string; }) => ({
+        bg: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
+      }),
   },
   config: {
-    initialColorMode: 'light',
-    useSystemColorMode: false,
+    initialColorMode: 'dark',
+    useSystemColorMode: true,
   },
   styles: {
     global: (props: { colorMode: string; }) => ({
       body: {
-        bg: props.colorMode === 'dark' ? 'gray.800' : 'gray.100',
-        color: props.colorMode === 'dark' ? 'gray.100' : 'gray.800',
       },
       a: {
-        color: props.colorMode === 'dark' ? 'blue' : 'red.200', // this will style all anchor tags globally
+        color: props.colorMode === 'dark' ? 'green' : 'red.200', // this will style all anchor tags globally
       },
     }),
   },
+}
 });
 
 export default MoodIndigoTheme;

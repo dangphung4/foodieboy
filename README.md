@@ -11,22 +11,17 @@
 
   1. Clone the repository:
 
-    ```bash
     git clone git@github.com:dangphung4/foodieboy.git
-    ```
+    
 
   2. Install dependencies:
 
-    ```bash
     cd foodieboy
     npm install
-    ```
 
   3. Start the development server:
 
-    ```bash
     npm run dev
-    ```
 
   4. Open your browser and visit `http://localhost:5174` to see the app.
 

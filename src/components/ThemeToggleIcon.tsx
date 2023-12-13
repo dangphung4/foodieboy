@@ -14,7 +14,6 @@ const ThemeToggleIcon = () => {
       color={iconColor} 
       icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
       onClick={toggleColorMode}
-    //   isRound={true}
     />
   );
 };
