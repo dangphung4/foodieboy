@@ -19,7 +19,7 @@ const MoodIndigoTheme = extendTheme({
   components: {
     Link: {
       // baseStyle, sizes, variants, etc. can be customized here
-      baseStyle: (props) => ({
+      baseStyle: (props: { colorMode: string; }) => ({
         color: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
       }),
     },
