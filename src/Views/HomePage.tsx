@@ -11,33 +11,39 @@ const HomePage = () => {
 
   return (
     <motion.div
-    initial="initial"
-    animate="in"
-    exit="out"
-    variants={pageVariants}
-    transition={pageTransition}
-  >
-    <Flex w="100%" h="100vh" justifyContent="center" alignItems="center" p={8}>
-      <VStack spacing={6} textAlign="center">
-        <Heading as="h1" size="2xl" fontWeight="extrabold">
-          Welcome to FoodieBoy!
-        </Heading>
-        <Text color="slate" fontSize="lg" px={6}>
-          Start exploring delicious food options and satisfy your cravings with
-          our curated list of eateries.
-        </Text>
-        <Button
-          size="lg"
-          colorScheme="red"
-          px={8}
-          py={6}
-          borderRadius="md"
-          onClick={handleExploreClick}
-        >
-          Explore Now
-        </Button>
-      </VStack>
-    </Flex>
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      <Flex
+        w="100%"
+        h="100vh"
+        justifyContent="center"
+        alignItems="center"
+        p={8}
+      >
+        <VStack spacing={6} textAlign="center">
+          <Heading as="h1" size="2xl" fontWeight="extrabold">
+            Welcome to FoodieBoy!
+          </Heading>
+          <Text color="slate" fontSize="lg" px={6}>
+            Start exploring delicious food options and satisfy your cravings
+            with our curated list of eateries.
+          </Text>
+          <Button
+            size="lg"
+            colorScheme="red"
+            px={8}
+            py={6}
+            borderRadius="md"
+            onClick={handleExploreClick}
+          >
+            Explore Now
+          </Button>
+        </VStack>
+      </Flex>
     </motion.div>
   );
 };

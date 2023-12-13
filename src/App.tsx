@@ -1,5 +1,5 @@
 // App.js
-import * as React from "react"
+import * as React from "react";
 import {
   ChakraProvider,
   Flex,
@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
+import { AnimatePresence } from "framer-motion";
 import HomePage from "./Views/HomePage";
 import FoodPickerPage from "./Views/FoodPickerPage";
 import MoodIndigoTheme from "./theme";
@@ -25,9 +26,8 @@ import {
 function App() {
   const { toggleColorMode } = useColorMode();
   const linkColor = useColorModeValue("red.200", "blue");
-  const bg = useColorModeValue('red.500', 'red.200')
+  const bg = useColorModeValue("red.500", "red.200");
 
-  
   return (
     <ChakraProvider theme={MoodIndigoTheme}>
       <Router>
@@ -55,7 +55,7 @@ function App() {
           padding="4"
           // Make sure the content starts below the header
           // You can adjust the `pt` value as per your header height
-          pt={{ base: '16', md: '20' }}
+          pt={{ base: "16", md: "20" }}
         >
           <Routes>
             <Route path="/" element={<HomePage />} />
