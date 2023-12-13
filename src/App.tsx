@@ -24,7 +24,6 @@ function App() {
   const linkColor = useColorModeValue("red.200", "blue");
   const bg = useColorModeValue("red.500", "red.200");
 
-  
   return (
     <ChakraProvider theme={MoodIndigoTheme}>
       <Router>
@@ -42,6 +41,9 @@ function App() {
             </Link>
             <Link as={RouterLink} to="/food" marginRight="4">
               FoodieBoy
+            </Link>
+            <Link as={RouterLink} to="/food/list" marginRight="4">
+              Food Catalog
             </Link>
           </Box>
           <ThemeToggleIcon />

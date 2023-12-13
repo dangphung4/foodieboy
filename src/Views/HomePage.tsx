@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "./framer";
 
-const MotionFlex = motion(Flex);
-
 const HomePage = () => {
   const navigate = useNavigate();
 
