@@ -8,6 +8,8 @@ import {
   VStack,
   Button,
   HStack,
+  useColorMode,
+  Link,
 } from "@chakra-ui/react";
 import FoodButton from "../components/FoodButton";
 import { pageVariants, pageTransition } from "./framer";
@@ -19,9 +21,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const FoodPickerPage: React.FC = () => {
+  const { colorMode } = useColorMode();
+  const linkColor = colorMode === "dark" ? "orange.300" : "blue.500";
+
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<Restaurant | null>(null);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleFoodButtonClick = () => {
     const randomIndex = Math.floor(Math.random() * foods.length);
@@ -30,13 +35,18 @@ const FoodPickerPage: React.FC = () => {
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      selectedRestaurant ? (prevIndex + 1) % selectedRestaurant.images.length : 0
+      selectedRestaurant
+        ? (prevIndex + 1) % selectedRestaurant.images.length
+        : 0
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      selectedRestaurant ? (prevIndex - 1 + selectedRestaurant.images.length) % selectedRestaurant.images.length : 0
+      selectedRestaurant
+        ? (prevIndex - 1 + selectedRestaurant.images.length) %
+          selectedRestaurant.images.length
+        : 0
     );
   };
 
@@ -61,7 +71,9 @@ const FoodPickerPage: React.FC = () => {
             <Box borderWidth="1px" borderRadius="md" overflow="hidden" mt={4}>
               <Image
                 src={selectedRestaurant.images[currentImageIndex]}
-                alt={`${selectedRestaurant.name} image ${currentImageIndex + 1}`}
+                alt={`${selectedRestaurant.name} image ${
+                  currentImageIndex + 1
+                }`}
                 h={200}
                 objectFit="cover"
               />
@@ -75,7 +87,13 @@ const FoodPickerPage: React.FC = () => {
               </HStack>
               <Box p={4}>
                 <Heading as="h2" size="md" mb={2}>
-                  {selectedRestaurant.name}
+                  <Link
+                    href={`${selectedRestaurant.website}`}
+                    isExternal
+                    sx={{ color: linkColor }}
+                  >
+                    {selectedRestaurant.name}
+                  </Link>
                 </Heading>
                 <Text>{selectedRestaurant.description}</Text>
                 <StarRating rating={selectedRestaurant.rating} />
