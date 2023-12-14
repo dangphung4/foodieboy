@@ -17,6 +17,9 @@ import StarRating from "../components/StarRating";
 
 //TODO add hyper link to restaurant card, allowing user to access restaurant page
 //TODO Functionality to click on card and display review description
+//TODO add field for category and filter by category
+//TODO add field for price and filter by price
+//TODO add field for location
 
 const RestaurantListPage = () => {
   return (
