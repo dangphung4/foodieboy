@@ -1,10 +1,7 @@
-import * as React from "react";
 import {
   Flex,
   Box,
   Link,
-  useColorModeValue,
-  useColorMode,
 } from "@chakra-ui/react";
 import AnimatedRoutes from "./AnimatedRoutes";
 import ThemeToggleIcon from "./components/ThemeToggleIcon";
