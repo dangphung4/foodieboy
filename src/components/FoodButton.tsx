@@ -7,13 +7,11 @@ export type ButtonProps = {
 };
 
 const FoodButton: React.FC<ButtonProps> = ({ label, onClick }) => {
-  
   return (
-    <>
-      <Button onAbort={onClick} colorScheme="whatsapp">
-        {label}
-      </Button>
-    </>
+    <Button onClick={onClick} colorScheme="whatsapp">
+      {label}
+    </Button>
   );
 };
+
 export default FoodButton;
