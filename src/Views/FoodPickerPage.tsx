@@ -7,7 +7,7 @@ import {
   Image,
   VStack,
   Button,
-  Spacer,
+  HStack,
 } from "@chakra-ui/react";
 import FoodButton from "../components/FoodButton";
 import { pageVariants, pageTransition } from "./framer";
@@ -15,27 +15,31 @@ import { motion } from "framer-motion";
 import { foods } from "./foodsTestData";
 import { Restaurant } from "../components/types/Restaurant";
 import StarRating from "../components/StarRating";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const FoodPickerPage: React.FC = () => {
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<Restaurant | null>(null);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleFoodButtonClick = () => {
     const randomIndex = Math.floor(Math.random() * foods.length);
     setSelectedRestaurant(foods[randomIndex]);
   };
-console.log(selectedRestaurant);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      selectedRestaurant ? (prevIndex + 1) % selectedRestaurant.images.length : 0
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      selectedRestaurant ? (prevIndex - 1 + selectedRestaurant.images.length) % selectedRestaurant.images.length : 0
+    );
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -56,11 +60,19 @@ console.log(selectedRestaurant);
           {selectedRestaurant && (
             <Box borderWidth="1px" borderRadius="md" overflow="hidden" mt={4}>
               <Image
-                src={selectedRestaurant.images[0]}
-                alt={`${selectedRestaurant.name} image`}
+                src={selectedRestaurant.images[currentImageIndex]}
+                alt={`${selectedRestaurant.name} image ${currentImageIndex + 1}`}
                 h={200}
                 objectFit="cover"
               />
+              <HStack justifyContent="center" p={2}>
+                <Button size="sm" onClick={prevImage}>
+                  Previous
+                </Button>
+                <Button size="sm" onClick={nextImage}>
+                  Next
+                </Button>
+              </HStack>
               <Box p={4}>
                 <Heading as="h2" size="md" mb={2}>
                   {selectedRestaurant.name}

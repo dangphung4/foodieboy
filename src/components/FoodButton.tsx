@@ -1,12 +1,8 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
+import { FoodButtonProps } from "./types/FoodButtonProps";
 
-export type ButtonProps = {
-  label: string;
-  onClick?: () => void;
-};
-
-const FoodButton: React.FC<ButtonProps> = ({ label, onClick }) => {
+const FoodButton: React.FC<FoodButtonProps> = ({ label, onClick }) => {
   return (
     <Button onClick={onClick} colorScheme="whatsapp">
       {label}

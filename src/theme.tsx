@@ -1,6 +1,10 @@
 // theme.js
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, type ThemeConfig  } from '@chakra-ui/react';
 
+const config: ThemeConfig = {
+  initialColorMode: 'dark',
+  useSystemColorMode: true,
+}
 const MoodIndigoTheme = extendTheme({
   colors: {
     indigo: {
@@ -27,10 +31,7 @@ const MoodIndigoTheme = extendTheme({
         bg: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
       }),
   },
-  config: {
-    initialColorMode: 'dark',
-    useSystemColorMode: true,
-  },
+  config: config,
   styles: {
     global: (props: { colorMode: string; }) => ({
       body: {
@@ -43,4 +44,9 @@ const MoodIndigoTheme = extendTheme({
 }
 });
 
+
 export default MoodIndigoTheme;
+
+
+
+

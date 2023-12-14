@@ -17,6 +17,9 @@ import StarRating from "../components/StarRating";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { sliderSettings } from "./SliderSettings";
+import { useColorMode } from '@chakra-ui/react';
+
 
 //TODO add hyper link to restaurant card, allowing user to access restaurant page
 //TODO Functionality to click on card and display review description
@@ -24,16 +27,11 @@ import "slick-carousel/slick/slick-theme.css";
 //TODO add field for price and filter by price
 //TODO add field for location
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1
-};
-
 
 const RestaurantListPage = () => {
+  const { colorMode } = useColorMode();
+  const linkColor = colorMode === 'dark' ? 'orange.300' : 'blue.500'; // Replace with your desired colors
+
   return (
     <motion.div
       initial="initial"
@@ -50,7 +48,7 @@ const RestaurantListPage = () => {
           {foods.map((restaurant) => (
             <GridItem key={restaurant.id}>
               <Box borderWidth="1px" borderRadius="md" overflow="hidden">
-                <Slider {...settings}>
+                <Slider {...sliderSettings}>
                   {restaurant.images.map((image, index) => (
                     <div key={index}>
                       <Image
@@ -64,7 +62,9 @@ const RestaurantListPage = () => {
                 </Slider>
                 <Box p={4}>
                   <Heading as="h2" size="md" mb={2}>
+                    <Link href={`${restaurant.website}`} isExternal sx={{ color: linkColor }}>
                     {restaurant.name}
+                    </Link>
                   </Heading>
                   <Text>{restaurant.description}</Text>
                 </Box>

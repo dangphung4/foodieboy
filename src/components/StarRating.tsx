@@ -1,10 +1,7 @@
 import React from "react";
 import { Flex, Icon } from "@chakra-ui/react";
 import { FaStar, FaRegStar } from "react-icons/fa";
-
-export type StarRatingProps = {
-  rating: number;
-};
+import { StarRatingProps } from "./types/StarRatingProps";
 
 const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   const totalStars = 5;

@@ -30,8 +30,7 @@ const HomePage = () => {
             Welcome to FoodieBoy!
           </Heading>
           <Text color="slate" fontSize="lg" px={6}>
-            Start exploring delicious food options and satisfy your cravings
-            with our curated list of eateries.
+            A website documenting all the food spots we've gone to.
           </Text>
           <Button
             size="lg"
