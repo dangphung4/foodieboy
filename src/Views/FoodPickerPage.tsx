@@ -76,7 +76,7 @@ const FoodPickerPage: React.FC = () => {
                 alt={`${selectedRestaurant.name} image ${
                   currentImageIndex + 1
                 }`}
-                h={200}
+                h={400}
                 objectFit="cover"
               />
               <HStack justifyContent="center" p={2}>
