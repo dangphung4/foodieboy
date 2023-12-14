@@ -19,10 +19,12 @@ import { Restaurant } from "../components/types/Restaurant";
 import StarRating from "../components/StarRating";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { fadeVariants } from "../components/types/FadeVariant";
 
 const FoodPickerPage: React.FC = () => {
   const { colorMode } = useColorMode();
   const linkColor = colorMode === "dark" ? "orange.300" : "blue.500";
+  const [showReview, setShowReview] = useState(false);
 
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<Restaurant | null>(null);
