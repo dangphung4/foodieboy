@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useColorMode } from "@chakra-ui/react";
 import { RestaurantCard } from "../components/RestaurantCard";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 const RestaurantListPage = () => {
   const { colorMode } = useColorMode();
@@ -14,7 +14,7 @@ const RestaurantListPage = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const handleCategoryChange = (event) => {
+  const handleCategoryChange = (event: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedCategory(event.target.value);
   };
 
