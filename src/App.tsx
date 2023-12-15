@@ -1,8 +1,4 @@
-import {
-  Flex,
-  Box,
-  Link,
-} from "@chakra-ui/react";
+import { Flex, Box, Link } from "@chakra-ui/react";
 import AnimatedRoutes from "./AnimatedRoutes";
 import ThemeToggleIcon from "./components/ThemeToggleIcon";
 import { BrowserRouter as Router, Link as RouterLink } from "react-router-dom";
@@ -31,12 +27,7 @@ function App() {
         </Box>
         <ThemeToggleIcon />
       </Flex>
-      <Flex
-        direction="column"
-        // minHeight="100vh"
-        padding="4"
-        // pt={{ base: "16", md: "20" }}
-      >
+      <Flex direction="column" padding="4">
         <AnimatedRoutes />
       </Flex>
     </Router>
