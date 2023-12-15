@@ -52,6 +52,7 @@ const RestaurantListPage = () => {
           <option value="Greek">Greek</option>
           <option value="Caribbean">Caribbean</option>
           <option value="African">African</option>
+          <option value="Nepalese">Nepalese</option>
         </Select>
         <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={4}>
         {filteredFoods.map((restaurant) => (
