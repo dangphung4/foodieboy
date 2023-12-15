@@ -1,7 +1,7 @@
 import { Flex, Heading, Text, Button, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { pageVariants, pageTransition } from "./framer";
+import { pageVariants, pageTransition } from "../components/types/framer";
 
 const HomePage = () => {
   const navigate = useNavigate();

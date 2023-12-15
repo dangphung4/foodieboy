@@ -16,7 +16,7 @@ import { RestaurantCardProps } from "../components/types/RestaurantCardProps";
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { sliderSettings } from "../Views/SliderSettings";
+import { sliderSettings } from "./types/SliderSettings";
 
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({
   restaurant,

@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import FoodButton from "../components/FoodButton";
-import { pageVariants, pageTransition } from "./framer";
+import { pageVariants, pageTransition } from "../components/types/framer";
 import { motion } from "framer-motion";
 import { foods } from "./foodsTestData";
 import { Restaurant } from "../components/types/Restaurant";

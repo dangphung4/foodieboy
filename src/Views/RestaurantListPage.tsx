@@ -1,6 +1,6 @@
 import { Box, Grid, Heading, Select } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { pageVariants, pageTransition } from "./framer";
+import { pageVariants, pageTransition } from "../components/types/framer";
 import { foods } from "./foodsTestData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,7 +52,6 @@ const RestaurantListPage = () => {
           <option value="Greek">Greek</option>
           <option value="Caribbean">Caribbean</option>
           <option value="African">African</option>
-          {/* Add more categories as needed */}
         </Select>
         <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={4}>
         {filteredFoods.map((restaurant) => (
