@@ -24,6 +24,9 @@ function App() {
           <Link as={RouterLink} to="/food/list" marginRight="4">
             Restaurants
           </Link>
+          <Link as={RouterLink} to="/csv" marginRight="4">
+            CSV
+          </Link>
         </Box>
         <ThemeToggleIcon />
       </Flex>
