@@ -34,7 +34,7 @@
   In the project directory, you can run:
 
   - `npm run dev`: Starts the development server.
-  - `npm build`: Builds the app for production.
+  - `npm run build`: Builds the app for production.
   - `npm serve`: Serves the production build locally.
   - `npm test`: Runs the tests.
   - `npm lint`: Lints the code.
