@@ -1,52 +1,77 @@
 // theme.js
-import { extendTheme, type ThemeConfig  } from '@chakra-ui/react';
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
-  useSystemColorMode: true,
-}
-const MoodIndigoTheme = extendTheme({
+  useSystemColorMode: false,
+};
+
+const FoodieBoyTheme = extendTheme({
   colors: {
-    indigo: {
-      50: '#ebefff',  
-      100: '#c2c6ff',
-      200: '#999dff',
-      300: '#7073ff',
-      400: '#474aff',
-      500: '#1e20ff', 
-      600: '#1819cc', 
-      700: '#121399',
-      800: '#0c0d66',
-      900: '#060733',
+    github: {
+      dark: {
+        bg: '#0d1117',
+        text: '#c9d1d9',
+        link: '#58a6ff',
+        border: '#30363d',
+        hover: '#1f6feb',
+        muted: '#8b949e',
+      },
+      light: {
+        bg: '#ffffff',
+        text: '#24292e',
+        link: '#0366d6',
+        border: '#e1e4e8',
+        hover: '#0366d6',
+        muted: '#6a737d',
+      },
     },
   },
   components: {
     Link: {
-      baseStyle: (props: { colorMode: string; }) => ({
-        color: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
+      baseStyle: ({ colorMode }) => ({
+        color: colorMode === 'dark' ? 'github.dark.link' : 'github.light.link',
+        _hover: {
+          textDecoration: 'underline',
+          color: colorMode === 'dark' ? 'github.dark.hover' : 'github.light.hover',
+        },
       }),
     },
-    Flex: {
-      baseStyle: (props: { colorMode: string; }) => ({
-        bg: props.colorMode === 'dark' ? 'red.200' : 'purple.500',
+    Heading: {
+      baseStyle: ({ colorMode }) => ({
+        color: colorMode === 'dark' ? 'github.dark.text' : 'github.light.text',
       }),
+    },
+    Text: {
+      baseStyle: ({ colorMode }) => ({
+        color: colorMode === 'dark' ? 'github.dark.text' : 'github.light.text',
+      }),
+    },
+    Button: {
+      baseStyle: ({ colorMode }) => ({
+        bg: colorMode === 'dark' ? 'github.dark.link' : 'github.light.link',
+        color: 'white',
+        _hover: {
+          bg: colorMode === 'dark' ? 'github.dark.hover' : 'github.light.hover',
+        },
+      }),
+    },
   },
   config: config,
   styles: {
-    global: (props: { colorMode: string; }) => ({
+    global: ({ colorMode }) => ({
       body: {
+        bg: colorMode === 'dark' ? 'github.dark.bg' : 'github.light.bg',
+        color: colorMode === 'dark' ? 'github.dark.text' : 'github.light.text',
       },
-      a: {
-        color: props.colorMode === 'dark' ? 'green' : 'red.200', // this will style all anchor tags globally
+      'html, body': {
+        minHeight: '100vh',
+      },
+      '*': {
+        borderColor: colorMode === 'dark' ? 'github.dark.border' : 'github.light.border',
       },
     }),
   },
-}
 });
 
-
-export default MoodIndigoTheme;
-
-
-
-
+export default FoodieBoyTheme;
