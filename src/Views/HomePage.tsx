@@ -12,10 +12,9 @@ const HomePage = () => {
 
   return (
     <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-      <Flex w="100%" minH="100vh" direction="column" p={8}>
-        {/* Introduction Section */}
-        <Box textAlign="center" mb={12}>
-          <Heading as="h1" size="2xl" fontWeight="extrabold" mb={6}>
+  <Flex w="100%" minH="100vh" direction="column" p={8} align="center" justify="center">
+    <Box textAlign="center" mb={12} width={["90%", "80%", "70%"]} mx="auto">
+      <Heading as="h1" size="2xl" fontWeight="extrabold" mb={6}>
             mmmmm cheesecake...
           </Heading>
           <Text fontSize="xl" px={6}>
@@ -24,21 +23,36 @@ const HomePage = () => {
         </Box>
 
         {/* About Me Section */}
-        <Flex alignItems="center" mb={12}>
-          <Image src="bigdang.jpg" alt="Profile" boxSize="300px" borderRadius="full" mr={8} />
-          <Box>
-            <Heading as="h2" size="xl" mb={4}>
-              About Me
-            </Heading>
-            <Text fontSize="lg">
-              {/* Add your about me content here */}
-              <strong>I have big heart, and an even bigger stomach. If I remember to update this website you'll see places that I've been to.</strong>
-            </Text>
-          </Box>
-        </Flex>
+        <Flex
+      direction={["column", "row"]}
+      alignItems="center"
+      justifyContent={["center", "flex-start"]} // Centers content on small screens, aligns to start on larger
+      width={["40%", "40%"]} // Reduces width on larger screens for better alignment
+      mb={12}
+      px={8}
+      mx="auto" // Centers the Flex container
+    >
+      <Image
+        src="bigdang.jpg"
+        alt="Profile"
+        boxSize={["200px", "300px"]}
+        borderRadius="full"
+        mr={[0, 8]}
+        mb={[4, 0]}
+      />
+      <Box textAlign={["center", "left"]} flex="1">
+        <Heading as="h2" size="xl" mb={4}>
+          About Me
+        </Heading>
+        <Text fontSize="lg">
+          <strong>I have big heart, and an even bigger stomach. If I remember to update this website, you'll see places that I've been to.</strong>
+        </Text>
+      </Box>
+    </Flex>
+
 
         {/* Favorite Restaurants Section */}
-<Box mb={12}>
+      <Box textAlign={["center", "left"]} width={["100%", "auto"]}>
   <Heading as="h2" size="xl" mb={6}>
     My Favorite Restaurants
   </Heading>
@@ -50,7 +64,8 @@ const HomePage = () => {
       </Heading>
       <Flex alignItems="center" mb={4}>
         <Image src="mickyd.jpg" alt="Restaurant 1" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
-        <Box>
+        <Box textAlign={["center", "left"]} width={["100%", "auto"]}>
+
           <Text fontSize="lg" mb={2}>
             {/* Add a brief description of why you like this restaurant */}
             <strong>I love mcdonalds. This is one of the most exquisite places one could go to. From the fries to the burgers, everything is just perfect. The customer service is also top-notch.
