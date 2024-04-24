@@ -19,7 +19,7 @@ const HomePage = () => {
             Welcome to FoodieBoy!
           </Heading>
           <Text fontSize="xl" px={6}>
-            Hello! This is my website of food spots that I like to go to. I will have photos of my food that I will import, photos of me, photos of my favorite foods, and descriptions about my favorite spots to eat, and so forth.
+            <strong>Hello! This is my website of food spots that I like to go to. I will have photos of my food that I will import, photos of me, photos of my favorite foods, and descriptions about my favorite spots to eat, and so forth.</strong>
           </Text>
         </Box>
 
@@ -32,7 +32,7 @@ const HomePage = () => {
             </Heading>
             <Text fontSize="lg">
               {/* Add your about me content here */}
-              I'm a passionate food enthusiast who loves exploring new restaurants and cuisines. Join me on my culinary adventures as I share my experiences and recommendations!
+              <strong>I'm a passionate food enthusiast who loves exploring new restaurants and cuisines. Join me on my culinary adventures as I share my experiences and recommendations!</strong>
             </Text>
           </Box>
         </Flex>
@@ -53,7 +53,7 @@ const HomePage = () => {
         <Box>
           <Text fontSize="lg" mb={2}>
             {/* Add a brief description of why you like this restaurant */}
-            I love the cozy ambiance and the delicious pasta dishes at this Italian restaurant. The staff is always friendly and attentive.
+            <strong>I love the cozy ambiance and the delicious pasta dishes at this Italian restaurant. The staff is always friendly and attentive.</strong>
           </Text>
           <Text fontSize="md" color="blue.500" mb={2}>
             {/* Add the restaurant's website link */}
@@ -63,7 +63,7 @@ const HomePage = () => {
           </Text>
           <Text fontSize="md" fontWeight="bold">
             {/* Add your review or rating */}
-            My Rating: 4.5/5
+            <strong>My Rating: 4.5/5</strong>
           </Text>
         </Box>
       </Flex>
@@ -79,7 +79,7 @@ const HomePage = () => {
         <Box>
           <Text fontSize="lg" mb={2}>
             {/* Add a brief description of why you like this restaurant */}
-            This sushi place offers the freshest and most creative rolls in town. The chef's special is a must-try!
+            <strong>This sushi place offers the freshest and most creative rolls in town. The chef's special is a must-try!</strong>
           </Text>
           <Text fontSize="md" color="blue.500" mb={2}>
             {/* Add the restaurant's website link */}
@@ -101,7 +101,7 @@ const HomePage = () => {
 
         {/* Explore Button */}
         <Flex justifyContent="center">
-          <Button size="lg" colorScheme="red" px={8} py={6} borderRadius="md" onClick={handleExploreClick}>
+        <Button size="lg" fontWeight="bold" px={8} py={6} borderRadius="lg" colorScheme="purple" onClick={handleExploreClick}>
             Explore Now
           </Button>
         </Flex>
