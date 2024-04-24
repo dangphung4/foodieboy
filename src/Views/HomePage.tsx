@@ -46,7 +46,7 @@ const HomePage = () => {
     {/* Restaurant 1 */}
     <Box borderRadius="md" boxShadow="md" p={6}>
       <Heading as="h3" size="lg" mb={4}>
-        MickyDs
+        McDonalds
       </Heading>
       <Flex alignItems="center" mb={4}>
         <Image src="mickyd.jpg" alt="Restaurant 1" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
