@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import FoodButton from "../components/FoodButton";
-import { pageVariants, pageTransition } from "./framer";
+import { pageVariants, pageTransition } from "../components/types/framer";
 import { motion } from "framer-motion";
 import { foods } from "./foodsTestData";
 import { Restaurant } from "../components/types/Restaurant";
@@ -69,14 +69,25 @@ const FoodPickerPage: React.FC = () => {
           </Box>
           {selectedRestaurant && (
             <Box borderWidth="1px" borderRadius="md" overflow="hidden" mt={4}>
-              <Image
-                src={selectedRestaurant.images[currentImageIndex]}
-                alt={`${selectedRestaurant.name} image ${
-                  currentImageIndex + 1
-                }`}
-                h={400}
-                objectFit="cover"
-              />
+              <Box
+                borderRadius="md"
+                overflow="hidden"
+                mt={4}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                height="400px"
+              >
+                <Image
+                  src={selectedRestaurant.images[currentImageIndex]}
+                  alt={`${selectedRestaurant.name} image ${
+                    currentImageIndex + 1
+                  }`}
+                  maxWidth="100%"
+                  maxHeight="100%"
+                  objectFit="contain"
+                />
+              </Box>
               <HStack justifyContent="center" p={2}>
                 <Button size="sm" onClick={prevImage}>
                   Previous
