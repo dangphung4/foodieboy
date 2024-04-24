@@ -18,15 +18,15 @@ function App() {
           <Link as={RouterLink} to="/" marginRight="4">
             Home
           </Link>
-          <Link as={RouterLink} to="/food" marginRight="4">
-            FoodieBoy
-          </Link>
           <Link as={RouterLink} to="/food/list" marginRight="4">
             Restaurants
           </Link>
-          <Link as={RouterLink} to="/csv" marginRight="4">
-            CSV
+          <Link as={RouterLink} to="/food" marginRight="4">
+            Randomizer
           </Link>
+          {/* <Link as={RouterLink} to="/blogs" marginRight="4">
+            Blogs
+          </Link> */}
         </Box>
         <ThemeToggleIcon />
       </Flex>
