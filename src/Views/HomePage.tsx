@@ -16,23 +16,23 @@ const HomePage = () => {
         {/* Introduction Section */}
         <Box textAlign="center" mb={12}>
           <Heading as="h1" size="2xl" fontWeight="extrabold" mb={6}>
-            Welcome to FoodieBoy!
+            mmmmm cheesecake...
           </Heading>
           <Text fontSize="xl" px={6}>
-            <strong>Hello! This is my website of food spots that I like to go to. I will have photos of my food that I will import, photos of me, photos of my favorite foods, and descriptions about my favorite spots to eat, and so forth.</strong>
+            <strong>Hello! This is my website of food spots that I like to go to. The plan is to revamp this website bc honestly its pretty bad, and if i feel like it i can add blogs.</strong>
           </Text>
         </Box>
 
         {/* About Me Section */}
         <Flex alignItems="center" mb={12}>
-          <Image src="profile.jpg" alt="Profile" boxSize="200px" borderRadius="full" mr={8} />
+          <Image src="bigdang.jpg" alt="Profile" boxSize="300px" borderRadius="full" mr={8} />
           <Box>
             <Heading as="h2" size="xl" mb={4}>
               About Me
             </Heading>
             <Text fontSize="lg">
               {/* Add your about me content here */}
-              <strong>I'm a passionate food enthusiast who loves exploring new restaurants and cuisines. Join me on my culinary adventures as I share my experiences and recommendations!</strong>
+              <strong>I have big heart, and an even bigger stomach. If I remember to update this website you'll see places that I've been to.</strong>
             </Text>
           </Box>
         </Flex>
@@ -46,18 +46,20 @@ const HomePage = () => {
     {/* Restaurant 1 */}
     <Box borderRadius="md" boxShadow="md" p={6}>
       <Heading as="h3" size="lg" mb={4}>
-        Restaurant 1
+        MickyDs
       </Heading>
       <Flex alignItems="center" mb={4}>
-        <Image src="restaurant1.jpg" alt="Restaurant 1" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
+        <Image src="mickyd.jpg" alt="Restaurant 1" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
         <Box>
           <Text fontSize="lg" mb={2}>
             {/* Add a brief description of why you like this restaurant */}
-            <strong>I love the cozy ambiance and the delicious pasta dishes at this Italian restaurant. The staff is always friendly and attentive.</strong>
+            <strong>I love mcdonalds. This is one of the most exquisite places one could go to. From the fries to the burgers, everything is just perfect. The customer service is also top-notch.
+              One thing to keep in mind is that the place is always crowded, so make sure to book a table in advance.
+            </strong>
           </Text>
           <Text fontSize="md" color="blue.500" mb={2}>
             {/* Add the restaurant's website link */}
-            <a href="https://www.restaurant1.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.mcdonalds.com/us/en-us.html" target="_blank" rel="noopener noreferrer">
               Visit Website
             </a>
           </Text>
@@ -72,18 +74,18 @@ const HomePage = () => {
     {/* Restaurant 2 */}
     <Box borderRadius="md" boxShadow="md" p={6}>
       <Heading as="h3" size="lg" mb={4}>
-        Restaurant 2
+        CM Chicken
       </Heading>
       <Flex alignItems="center" mb={4}>
-        <Image src="restaurant2.jpg" alt="Restaurant 2" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
+        <Image src="cmchicken.jpg" alt="Restaurant 2" boxSize="200px" objectFit="cover" mr={6} borderRadius="md" />
         <Box>
           <Text fontSize="lg" mb={2}>
             {/* Add a brief description of why you like this restaurant */}
-            <strong>This sushi place offers the freshest and most creative rolls in town. The chef's special is a must-try!</strong>
+            <strong>I love fried chicken. If you can get tikkudak which is them smoking the chicken after deep frying it twice.... its wraps. PACK IT UP</strong>
           </Text>
           <Text fontSize="md" color="blue.500" mb={2}>
             {/* Add the restaurant's website link */}
-            <a href="https://www.restaurant2.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.cmchicken.us/" target="_blank" rel="noopener noreferrer">
               Visit Website
             </a>
           </Text>
