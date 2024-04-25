@@ -1,44 +1,36 @@
 import React from "react";
-import { Flex, Icon } from "@chakra-ui/react";
-import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { Box, Flex, Icon } from "@chakra-ui/react";
+import { FaStar } from "react-icons/fa";
 import { StarRatingProps } from "./types/StarRatingProps";
 
-/**
- * Star rating
- * This component displays a star rating including partial stars for decimal ratings
- * @param {StarRatingProps} props - The properties of the star rating
- * @returns {React.ReactElement} The star rating
- */
+// Single Star Component with adjustable fill
+const Star = ({ fill }) => {
+  return (
+    <Box position="relative" display="inline-block" width="1em" height="1em">
+      <Icon as={FaStar} color="gray.300" boxSize="1em" />
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        width={`${fill * 100}%`}
+        height="100%"
+        overflow="hidden"
+        color="yellow.400"
+      >
+        <Icon as={FaStar} boxSize="1em" />
+      </Box>
+    </Box>
+  );
+};
+
 const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   const totalStars = 5;
-  const fullStars = Math.floor(rating);
-  const halfStar = (rating % 1) >= 0.5 ? 1 : 0;
-  const emptyStars = totalStars - fullStars - halfStar;
+  const stars = Array.from({ length: totalStars }, (_, i) => {
+    const fill = Math.max(0, Math.min(1, rating - i));
+    return <Star key={i} fill={fill} />;
+  });
 
-  return (
-    <Flex>
-      {[...Array(fullStars)].map((_, i) => (
-        <Icon
-          key={`full-${i}`}
-          as={FaStar}
-          color="yellow.400"
-        />
-      ))}
-      {halfStar === 1 && (
-        <Icon
-          as={FaStarHalfAlt}
-          color="yellow.400"
-        />
-      )}
-      {[...Array(emptyStars)].map((_, i) => (
-        <Icon
-          key={`empty-${i}`}
-          as={FaRegStar}
-          color="gray.300"
-        />
-      ))}
-    </Flex>
-  );
+  return <Flex>{stars}</Flex>;
 };
 
 export default StarRating;
