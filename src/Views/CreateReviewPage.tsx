@@ -16,6 +16,7 @@ import {
   Text,
   Link,
   FormErrorMessage,
+  useToast,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
@@ -32,19 +33,13 @@ const CreateReviewPage = () => {
   const [location, setLocation] = useState("");
   const [ratingError, setRatingError] = useState(false);
 
+  const toast = useToast();
+
   const handleImageChange = (e) => {
     const urls = e.target.value.split(",").map((url) => url.trim());
     setImages(urls);
   };
 
-  const handleRatingChange = (value) => {
-    if (value <= 5) {
-      setRating(value);
-      setRatingError(false);
-    } else {
-      setRatingError(true);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,34 +49,51 @@ const CreateReviewPage = () => {
     }
 
     const reviewData = {
-      name,
-      website,
-      description,
-      images,
-      rating,
-      category,
-      location,
-      user_id: "your_user_id", // Replace with the actual user ID
+        name,
+        website,
+        description,
+        images,
+        rating,
+        category,
+        location,
+        user_id: "your_user_id", // Replace with the actual user ID
+      };
+    
+      try {
+        await axios.post(
+          "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews/create/",
+          reviewData
+        );
+        // Reset form fields after successful submission
+        setName("");
+        setWebsite("");
+        setDescription("");
+        setImages([]);
+        setRating(0);
+        setCategory("");
+        setLocation("");
+        setRatingError(false);
+    
+        // Show success toast notification
+        toast({
+          title: "Review submitted",
+          description: "Your review has been successfully submitted.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } catch (error) {
+        console.error("Error creating review:", error);
+        // Show error toast notification
+        toast({
+          title: "Submission failed",
+          description: "An error occurred while submitting your review.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
     };
-
-    try {
-      await axios.post(
-        "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews/create/",
-        reviewData
-      );
-      // Reset form fields after successful submission
-      setName("");
-      setWebsite("");
-      setDescription("");
-      setImages([]);
-      setRating(0);
-      setCategory("");
-      setLocation("");
-      setRatingError(false);
-    } catch (error) {
-      console.error("Error creating review:", error);
-    }
-  };
 
   return (
     <motion.div
