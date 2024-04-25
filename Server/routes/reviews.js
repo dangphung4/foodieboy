@@ -91,6 +91,8 @@ router.get("/users/:user_id", getReviewByUserId);
  *                 type: string
  *               description:
  *                 type: string
+ *               review:
+ *                 type: string
  *               images:
  *                 type: array
  *                 items:
@@ -133,6 +135,8 @@ router.post("/create/", createReview);
  *               website:
  *                 type: string
  *               description:
+ *                 type: string
+ *               review:
  *                 type: string
  *               images:
  *                 type: array
