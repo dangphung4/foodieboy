@@ -43,6 +43,7 @@ Here's the organization:
 ├─📁 dist # Compiled code
 ├─📁 node_modules # NPM packages
 ├─📁 public # Public assets
+├─📁 Server # Express server
 ├─📁 src # Source code
 │ ├─📁 components # React components
 │ ├─📁 data # Data models

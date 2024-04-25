@@ -1,36 +1,32 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../models/index.js';
 
-dotenv.config();
-
-const app = express();
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-
-
-app.use(express.json());
-
-// Routes and API endpoints go here
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-
-// Get all reviews
-app.get('/reviews', async (req, res) => {
+/**
+ * Gets all reviews from the database
+ * 
+ * @param {*} req 
+ * @param {*} res  
+ * @returns a list of {Review} objects
+ */
+export const getAllReviews = async (req, res) => {
     const { data: reviews, error } = await supabase.from('reviews').select('*');
     if (error) {
       console.error('Error fetching reviews:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-    console.log(reviews);
-    console.log("HELLO");
     res.json(reviews);
-     reviews;
-  });
-  
-  // Create a new restaurant review
-  app.post('/reviews', async (req, res) => {
+    return reviews;
+    };
+
+
+/**
+ * Creates a new review in the database
+ *
+ * @async
+ * @param {*} req
+ * @param {*} res
+ * @returns {Promise<*>}
+ */
+export const createReview = async (req, res) => {
     const { name, website, description, review, images, rating, category } = req.body;
     const { data: newReview, error } = await supabase.from('reviews').insert({
       name,
@@ -46,10 +42,19 @@ app.get('/reviews', async (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     res.json(newReview);
-  });
-  
-  // Update a restaurant review
-app.put('/reviews/:id', async (req, res) => {
+    };
+
+    
+
+/**
+ * Updates a review in the database
+ *
+ * @async
+ * @param {*} req
+ * @param {*} res
+ * @returns {Promise<*>}
+ */
+export const updateReview = async (req, res) => {
     const { id } = req.params;
     const { name, website, description, review, images, rating, category } = req.body;
     const { data: updatedReview, error } = await supabase
@@ -62,10 +67,19 @@ app.put('/reviews/:id', async (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     res.json(updatedReview);
-  });
-  
-  // Delete a restaurant review
-  app.delete('/reviews/:id', async (req, res) => {
+    };
+
+
+    
+/**
+ * Deletes a review from the database
+ *
+ * @async
+ * @param {*} req
+ * @param {*} res
+ * @returns {Promise<*>}
+ */
+export const deleteReview = async (req, res) => {
     const { id } = req.params;
     const { data: deletedReview, error } = await supabase
       .from('reviews')
@@ -77,5 +91,4 @@ app.put('/reviews/:id', async (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     res.json(deletedReview);
-  });
-  // Add more endpoints for updating and deleting restaurant reviews
+    };
