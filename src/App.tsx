@@ -1,4 +1,4 @@
-import { Flex, Box, Link } from "@chakra-ui/react";
+import { Flex, Box, Link, Spacer } from "@chakra-ui/react";
 import AnimatedRoutes from "./AnimatedRoutes";
 import ThemeToggleIcon from "./components/ThemeToggleIcon";
 import { BrowserRouter as Router, Link as RouterLink } from "react-router-dom";
@@ -37,8 +37,11 @@ function App() {
             Blogs
           </Link> */}
         </Box>
-        <AuthenticationButton />
-        <ThemeToggleIcon />
+        <Flex align="center">
+          <ThemeToggleIcon />
+          <Spacer width="4" />
+          <AuthenticationButton />
+        </Flex>
       </Flex>
       <Flex direction="column" padding="4">
         <AnimatedRoutes />
