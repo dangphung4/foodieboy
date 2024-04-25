@@ -41,7 +41,7 @@ const CreateReviewPage = () => {
   const [description, setDescription] = useState("");
   const [review,setReview]= useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(null);
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [ratingError, setRatingError] = useState(false);
