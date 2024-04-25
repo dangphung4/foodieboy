@@ -25,7 +25,6 @@ import CategoryDropdown from "../components/CategoryDropdown";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 
-
 /**
  * Create review page
  * This is the page where the user can create a review
@@ -40,7 +39,7 @@ const CreateReviewPage = () => {
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
-  const [review,setReview]= useState("");
+  const [review, setReview] = useState("");
   const [images, setImages] = useState<string[]>([]);
   const [rating, setRating] = useState<number | null>(null);
   const [category, setCategory] = useState("");
@@ -57,8 +56,8 @@ const CreateReviewPage = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (rating !== null && rating > 5) {
-        setRatingError(true);
-        return;
+      setRatingError(true);
+      return;
     }
 
     const reviewData = {
@@ -86,6 +85,7 @@ const CreateReviewPage = () => {
       setRating(0);
       setCategory("");
       setLocation("");
+      setReview("");
       setRatingError(false);
 
       // Show success toast notification
@@ -107,6 +107,38 @@ const CreateReviewPage = () => {
         isClosable: true,
       });
     }
+  };
+  const customComponents = {
+    h1: ({ children }: any) => (
+      <Heading as="h1" size="2xl">
+        {children}
+      </Heading>
+    ),
+    h2: ({ children }: any) => (
+      <Heading as="h2" size="xl">
+        {children}
+      </Heading>
+    ),
+    h3: ({ children }: any) => (
+      <Heading as="h3" size="lg">
+        {children}
+      </Heading>
+    ),
+    h4: ({ children }: any) => (
+      <Heading as="h4" size="md">
+        {children}
+      </Heading>
+    ),
+    h5: ({ children }: any) => (
+      <Heading as="h5" size="sm">
+        {children}
+      </Heading>
+    ),
+    h6: ({ children }: any) => (
+      <Heading as="h6" size="xs">
+        {children}
+      </Heading>
+    ),
   };
 
   return (
@@ -227,7 +259,9 @@ const CreateReviewPage = () => {
               <Heading as="h2" size="md" mb={2}>
                 {name}
               </Heading>
-              <Text mb={2}>{description}</Text>
+              <ReactMarkdown components={customComponents}>
+                {description}
+              </ReactMarkdown>
               <HStack spacing={4} mb={4}>
                 {images.map((image, index) => (
                   <Image
@@ -239,7 +273,7 @@ const CreateReviewPage = () => {
                   />
                 ))}
               </HStack>
-            <StarRating rating={rating || 0} />
+              <StarRating rating={rating || 0} />
               <Text mt={2}>Category: {category}</Text>
               <Text>Location: {location}</Text>
               {website && (
@@ -247,6 +281,16 @@ const CreateReviewPage = () => {
                   Visit Website
                 </Link>
               )}
+              <Box mt={4}>
+                <Heading as="h3" size="md" mb={2}>
+                  Review
+                </Heading>
+                <Box borderWidth="1px" borderRadius="md" p={2}>
+                  <ReactMarkdown components={customComponents}>
+                    {review}
+                  </ReactMarkdown>
+                </Box>
+              </Box>
             </Box>
           </GridItem>
         </Grid>
