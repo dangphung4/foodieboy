@@ -1,55 +1,74 @@
-# FoodieBoy
+# 🍔 FoodieBoy
 
-  A website aimed to help others find good food in NOVA.
+My personal website that i probably plan to do a lot for , if i actually get to it... 
 
-  ## Prerequisites
+## Prerequisites 📋
 
-  - Node.js (version 18)
-  - NPM
+Make sure you have:
 
-  ## Getting Started
+- Node.js (version 18) 🟢
+- NPM 📦
 
-  1. Clone the repository:
+## Getting Started 🚀
 
+Follow these steps to get your local setup ready to run:
+
+1. Clone the repository:
+
+    ```bash
     git clone git@github.com:dangphung4/foodieboy.git
-    
+    ```
 
-  2. Install dependencies:
+2. Install dependencies:
 
+    ```bash
     cd foodieboy
     npm install
+    ```
 
-  3. Start the development server:
+3. Fire up the development server:
 
+    ```bash
     npm run dev
+    ```
 
-  4. Open your browser and visit `http://localhost:5174` to see the app.
+4. Open your browser and sail to `http://localhost:5174` to see the app in action.
 
-  ## Folder Structure
+## Project Layout 🗺️
 
-  Coming Soon...
+Here's the organization:
+```
+📁 FoodieBoy
+├─📁 .vscode # VSCode settings
+├─📁 dist # Compiled code
+├─📁 node_modules # NPM packages
+├─📁 public # Public assets
+├─📁 src # Source code
+│ ├─📁 components # React components
+│ ├─📁 data # Data models
+│ └─📁 views # Pages
+├─📁 .env # Environment variables
+├─📄 README.md # You are here! 📍
+└─📄 package.json # Project manifest
+```
 
-  ## Available Scripts
 
-  In the project directory, you can run:
+## Available Scripts 📜
 
-  - `npm run dev`: Starts the development server.
-  - `npm run build`: Builds the app for production.
-  - `npm serve`: Serves the production build locally.
-  - `npm test`: Runs the tests.
-  - `npm lint`: Lints the code.
-  - `npm format`: Formats the code.
+Scripts:
 
-  ## Built With
+- `npm run dev`: Starts the cooking at our development server.
+- `npm run build`: Prepares a tasty production build.
+- `npm serve`: Serves up the production build on a local platter.
+- `npm test`: Puts our code through a taste-test with some automated tests.
+- `npm lint`: Keeps our code looking clean and neat.
+- `npm format`: Beautifies our code to Michelin standards.
 
-  - [React](https://reactjs.org/)
-  - [TypeScript](https://www.typescriptlang.org/)
-  - [Vite](https://vitejs.dev/)
+## Built With 🛠️
 
-  ## Contributing
 
-   Haven't decided yet...
-   
-  ## License
 
-  This project is licensed under the [MIT License](LICENSE).
+- [React](https://reactjs.org/) - For stirring up components.
+- [TypeScript](https://www.typescriptlang.org/) - Adding some spice to our JavaScript.
+- [Vite](https://vitejs.dev/) - Blazing fast build tool.
+

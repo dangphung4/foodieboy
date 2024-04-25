@@ -11,8 +11,15 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/foods" element={<RestaurantListPage />} />
         <Route path="/food" element={<FoodPickerPage />} />
-        <Route path="/food/list" element={<RestaurantListPage />} />
+
+        {/*  Have this here to have authenticated routes */}
+        {/*     <Route path="/food" element={
+          <ProtectedRoute>
+            <FoodPickerPage />
+          </ProtectedRoute>
+        } /> */}
       </Routes>
     </AnimatePresence>
   );
