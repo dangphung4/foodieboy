@@ -11,6 +11,13 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
 
+/**
+ * This is the home page
+ * 
+ * This is the home page of the website. It contains information about the website and the author.
+ * The goal is for me to eventually create a dashboard integrate this or purge what this page is
+ * @returns {React.ReactElement} The home page
+ */
 const HomePage = () => {
   const navigate = useNavigate();
 

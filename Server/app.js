@@ -1,5 +1,6 @@
 import express from "express";
 import config from "./config/index.js";
+import cors from "cors";
 import swaggerUi from 'swagger-ui-express';
 import reviewsRouter from "./routes/reviews.js";
 import swaggerSpecs from './config/swagger.js';
@@ -11,10 +12,21 @@ import swaggerSpecs from './config/swagger.js';
  */
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 
+app.get('/swagger.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpecs);
+});
+
 // Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {
+  swaggerOptions: {
+    url: "/swagger.json", // Assuming the URL above is how you serve the Swagger spec
+  },
+}));
 
 
 /**
@@ -32,3 +44,5 @@ app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);
   console.log(`http://localhost:${config.port}`);
 });
+
+export default app;
