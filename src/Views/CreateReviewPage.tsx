@@ -236,6 +236,7 @@ const CreateReviewPage = () => {
                   <CategoryDropdown
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
+                    disableAll={true}
                   />
                 </FormControl>
                 <FormControl>
