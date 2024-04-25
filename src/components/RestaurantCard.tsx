@@ -2,7 +2,6 @@ import {
   Box,
   GridItem,
   Heading,
-  Text,
   Image,
   Flex,
   Spacer,
