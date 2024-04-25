@@ -1,75 +1,104 @@
 # 🍔 FoodieBoy
 
-My personal website that i probably plan to do a lot for , if i actually get to it... 
+Welcome to FoodieBoy, my personal website that I plan to develop extensively, if I actually get around to it... This project is built using React, TypeScript, and Vite for the frontend, and Express with Supabase for the backend.
 
 ## Prerequisites 📋
 
-Make sure you have:
+Before you begin, ensure you have the following installed:
 
 - Node.js (version 18) 🟢
 - NPM 📦
 
 ## Getting Started 🚀
 
-Follow these steps to get your local setup ready to run:
+Follow these steps to get your local development environment up and running:
 
 1. Clone the repository:
-
-    ```bash
-    git clone git@github.com:dangphung4/foodieboy.git
-    ```
+   ```bash
+   git clone git@github.com:dangphung4/foodieboy.git
+   ```
 
 2. Install dependencies:
+   ```bash
+   cd foodieboy
+   npm install
+   ```
 
+3. Set up environment variables:
+   - Create a `.env` file in the project root.
+   - Add the following variables to the `.env` file:
+     ```
+     VITE_AUTH0_DOMAIN=your_auth0_domain
+     VITE_AUTH0_CLIENT_ID=your_auth0_client_id
+     ```
+   - Replace `your_auth0_domain` and `your_auth0_client_id` with your actual Auth0 project domain URL and Client key.
+
+4. Open up a terminal and navigate to the Server Directory, and run the express app:
     ```bash
-    cd foodieboy
-    npm install
+    cd Server
+    node app.js
     ```
+    This should launch a server at 'http://localhost:3000'.
 
-3. Fire up the development server:
+5. Start the development server at the root directory in another terminal:
+   ```bash
+   npm run dev
+   ```
 
-    ```bash
-    npm run dev
-    ```
+5. Open your browser and navigate to `http://localhost:5174` to see the app in action.
 
-4. Open your browser and sail to `http://localhost:5174` to see the app in action.
+## Project Structure 🗺️
 
-## Project Layout 🗺️
+Here's an overview of the project structure:
 
-Here's the organization:
 ```
 📁 FoodieBoy
-├─📁 .vscode # VSCode settings
-├─📁 dist # Compiled code
-├─📁 node_modules # NPM packages
-├─📁 public # Public assets
-├─📁 Server # Express server
-├─📁 src # Source code
-│ ├─📁 components # React components
-│ ├─📁 data # Data models
-│ └─📁 views # Pages
-├─📁 .env # Environment variables
-├─📄 README.md # You are here! 📍
-└─📄 package.json # Project manifest
+├─📁 .vscode           # VSCode settings
+├─📁 dist              # Compiled code
+├─📁 node_modules      # NPM packages
+├─📁 public            # Public assets
+├─📁 server            # Express server
+│  ├─📁 config         # Configuration files
+│  ├─📁 controllers    # Route handlers
+│  ├─📁 models         # Database models
+│  └─📁 routes         # API routes
+├─📁 src               # Frontend source code
+│  ├─📁 components     # React components
+│  ├─📁 data           # Data models
+│  └─📁 views          # Pages
+├─📄 .env              # Environment variables
+├─📄 README.md         # You are here! 📍
+└─📄 package.json      # Project manifest
 ```
-
 
 ## Available Scripts 📜
 
-Scripts:
+In the project directory, you can run the following scripts:
 
-- `npm run dev`: Starts the cooking at our development server.
-- `npm run build`: Prepares a tasty production build.
-- `npm serve`: Serves up the production build on a local platter.
-- `npm test`: Puts our code through a taste-test with some automated tests.
-- `npm lint`: Keeps our code looking clean and neat.
-- `npm format`: Beautifies our code to Michelin standards.
+- `npm run dev`: Starts the development server for both the frontend and backend.
+- `npm run build`: Builds the frontend and backend for production.
+- `npm run serve`: Serves the production build locally.
+- `npm test`: Runs the automated tests for the project.
+- `npm lint`: Lints the codebase to maintain code quality.
+- `npm format`: Formats the code according to predefined standards.
+
+## Backend API Endpoints 🚀
+
+I plan to add Swagger Docs to this... someday...
+
 
 ## Built With 🛠️
 
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript.
+- [Vite](https://vitejs.dev/) - Fast build tool for modern web projects.
+- [Express](https://expressjs.com/) - Web framework for Node.js.
+- [Supabase](https://supabase.io/) - Open-source Firebase alternative.
 
+## Contributing 🤝
 
-- [React](https://reactjs.org/) - For stirring up components.
-- [TypeScript](https://www.typescriptlang.org/) - Adding some spice to our JavaScript.
-- [Vite](https://vitejs.dev/) - Blazing fast build tool.
+Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
+## License 📄
+
+This project is licensed under the [MIT License](LICENSE).
