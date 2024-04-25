@@ -21,13 +21,26 @@ import {
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
 import StarRating from "../components/StarRating";
+import CategoryDropdown from "../components/CategoryDropdown";
 import axios from "axios";
+// TODO add review input
 
+/**
+ * Create review page
+ * This is the page where the user can create a review
+ * TODO have a lot of stuff i need to make this good
+ * @returns {React.ReactElement} The create review page
+ * @constructor
+ * @returns {*}
+ *
+ * @returns {*}
+ */
 const CreateReviewPage = () => {
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
-  const [images, setImages] = useState([]);
+  const [review,setReview]= useState("");
+  const [images, setImages] = useState<string[]>([]);
   const [rating, setRating] = useState(0);
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
@@ -35,13 +48,12 @@ const CreateReviewPage = () => {
 
   const toast = useToast();
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e: { target: { value: string } }) => {
     const urls = e.target.value.split(",").map((url) => url.trim());
     setImages(urls);
   };
 
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (rating > 5) {
       setRatingError(true);
@@ -49,51 +61,52 @@ const CreateReviewPage = () => {
     }
 
     const reviewData = {
-        name,
-        website,
-        description,
-        images,
-        rating,
-        category,
-        location,
-        user_id: "your_user_id", // Replace with the actual user ID
-      };
-    
-      try {
-        await axios.post(
-          "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews/create/",
-          reviewData
-        );
-        // Reset form fields after successful submission
-        setName("");
-        setWebsite("");
-        setDescription("");
-        setImages([]);
-        setRating(0);
-        setCategory("");
-        setLocation("");
-        setRatingError(false);
-    
-        // Show success toast notification
-        toast({
-          title: "Review submitted",
-          description: "Your review has been successfully submitted.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      } catch (error) {
-        console.error("Error creating review:", error);
-        // Show error toast notification
-        toast({
-          title: "Submission failed",
-          description: "An error occurred while submitting your review.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
+      name,
+      website,
+      description,
+      images,
+      rating,
+      category,
+      location,
+      review,
+      user_id: "your_user_id", // Replace with the actual user ID
     };
+
+    try {
+      await axios.post(
+        "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews/create/",
+        reviewData
+      );
+      // Reset form fields after successful submission
+      setName("");
+      setWebsite("");
+      setDescription("");
+      setImages([]);
+      setRating(0);
+      setCategory("");
+      setLocation("");
+      setRatingError(false);
+
+      // Show success toast notification
+      toast({
+        title: "Review submitted",
+        description: "Your review has been successfully submitted.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error("Error creating review:", error);
+      // Show error toast notification
+      toast({
+        title: "Submission failed",
+        description: "An error occurred while submitting your review.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <motion.div
@@ -130,12 +143,23 @@ const CreateReviewPage = () => {
                     placeholder="Enter the restaurant website"
                   />
                 </FormControl>
+                {/* MAKE THIS MARKDOWN COMPATITBLE */}
                 <FormControl>
                   <FormLabel>Description</FormLabel>
                   <Textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Enter a description of the restaurant"
+                    required
+                  />
+                </FormControl>
+                {/* MAKE THIS MARKDOWN COMPATITBLE */}
+                <FormControl>
+                  <FormLabel>Review</FormLabel>
+                  <Textarea
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    placeholder="Enter a review of the restaurant"
                     required
                   />
                 </FormControl>
@@ -176,12 +200,9 @@ const CreateReviewPage = () => {
                 </FormControl>
                 <FormControl>
                   <FormLabel>Category</FormLabel>
-                  <Input
-                    type="text"
+                  <CategoryDropdown
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    placeholder="Enter the restaurant category"
-                    required
                   />
                 </FormControl>
                 <FormControl>

@@ -8,6 +8,7 @@ import { RestaurantCard } from "../components/RestaurantCard";
 import { SetStateAction, useState, useEffect } from "react";
 import axios from "axios";
 import { Restaurant } from "../components/types/Restaurant";
+import CategoryDropdown from "../components/CategoryDropdown";
 /**
  * Restaurant list page
  * This is the page where the user can see a list of restaurants
@@ -69,31 +70,8 @@ const RestaurantListPage = () => {
           Restaurant Catalog
         </Heading>
 
-        {/* TODO I will need to purge a lot of these fields bc honestly theres way too many */}
-        <Select
-          placeholder="Select category"
-          onChange={handleCategoryChange}
-          mb={8}
-        >
-          <option value="All">All</option>
-          <option value="American">American</option>
-          <option value="Korean">Korean</option>
-          <option value="Japanese">Japanese</option>
-          <option value="Chinese">Chinese</option>
-          <option value="Mexican">Mexican</option>
-          <option value="Italian">Italian</option>
-          <option value="Indian">Indian</option>
-          <option value="Thai">Thai</option>
-          <option value="Vietnamese">Vietnamese</option>
-          <option value="Mediterranean">Mediterranean</option>
-          <option value="Middle Eastern">Middle Eastern</option>
-          <option value="French">French</option>
-          <option value="Spanish">Spanish</option>
-          <option value="Greek">Greek</option>
-          <option value="Caribbean">Caribbean</option>
-          <option value="African">African</option>
-          <option value="Nepalese">Nepalese</option>
-        </Select>
+        <CategoryDropdown value={selectedCategory} onChange={handleCategoryChange} mb={8} />
+
         <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={4}>
           {filteredRestaurants.map((restaurant) => (
             <RestaurantCard
