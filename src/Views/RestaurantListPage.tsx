@@ -9,6 +9,7 @@ import { SetStateAction, useState, useEffect } from "react";
 import axios from "axios";
 import { Restaurant } from "../components/types/Restaurant";
 import CategoryDropdown from "../components/CategoryDropdown";
+import { apiUrl } from "../main";
 /**
  * Restaurant list page
  * This is the page where the user can see a list of restaurants
@@ -33,15 +34,14 @@ const RestaurantListPage = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await axios.get(
-        "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews"
-      );
+      const response = await axios.get(`${apiUrl}/reviews`);
       console.log("response", response);
       setRestaurants(response.data);
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     }
   };
+  
   const handleCategoryChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {

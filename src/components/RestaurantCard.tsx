@@ -2,7 +2,6 @@ import {
   Box,
   GridItem,
   Heading,
-  Text,
   Image,
   Flex,
   Spacer,
@@ -17,6 +16,7 @@ import { RestaurantCardProps } from "../components/types/RestaurantCardProps";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { sliderSettings } from "./types/SliderSettings";
+import ReactMarkdown from "react-markdown";
 
 /**
  * Restaurant card
@@ -31,6 +31,39 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
   linkColor,
 }) => {
   const [showReview, setShowReview] = useState(false);
+
+  const customComponents = {
+    h1: ({ children }: any) => (
+      <Heading as="h1" size="2xl">
+        {children}
+      </Heading>
+    ),
+    h2: ({ children }: any) => (
+      <Heading as="h2" size="xl">
+        {children}
+      </Heading>
+    ),
+    h3: ({ children }: any) => (
+      <Heading as="h3" size="lg">
+        {children}
+      </Heading>
+    ),
+    h4: ({ children }: any) => (
+      <Heading as="h4" size="md">
+        {children}
+      </Heading>
+    ),
+    h5: ({ children }: any) => (
+      <Heading as="h5" size="sm">
+        {children}
+      </Heading>
+    ),
+    h6: ({ children }: any) => (
+      <Heading as="h6" size="xs">
+        {children}
+      </Heading>
+    ),
+  };
 
   return (
     <GridItem key={restaurant.id}>
@@ -51,12 +84,18 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
                 <Slider {...sliderSettings}>
                   {restaurant.images.map((image, index) => (
                     <div key={index}>
-                      <Image
-                        src={image}
-                        alt={`${restaurant.name} image ${index + 1}`}
-                        h={200}
-                        objectFit="cover"
-                      />
+                      <Box width="100%" paddingTop="56.25%" position="relative">
+                        <Image
+                          src={image}
+                          alt={`${restaurant.name} image ${index + 1}`}
+                          objectFit="cover"
+                          position="absolute"
+                          top={0}
+                          left={0}
+                          right={0}
+                          bottom={0}
+                        />
+                      </Box>
                     </div>
                   ))}
                 </Slider>
@@ -73,9 +112,15 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
               variants={fadeVariants}
               layoutId={`card-container-${restaurant.id}`}
               onClick={() => setShowReview(false)}
-              style={{ cursor: "pointer", padding: "1rem", textAlign: "center" }}
+              style={{
+                cursor: "pointer",
+                padding: "1rem",
+                textAlign: "center",
+              }}
             >
-              <Text fontSize="lg">{restaurant.description}</Text>
+              <ReactMarkdown components={customComponents}>
+                {restaurant.description}
+              </ReactMarkdown>
             </motion.div>
           )}
         </AnimatePresence>
@@ -89,7 +134,9 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
               {restaurant.name}
             </Link>
           </Heading>
-          <Text>{restaurant.review}</Text>
+          <ReactMarkdown components={customComponents}>
+            {restaurant.review}
+          </ReactMarkdown>
         </Box>
         <Flex p={4}>
           <Spacer />
