@@ -21,6 +21,7 @@ import {
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
 import StarRating from "../components/StarRating";
+import { apiUrl } from "../main";
 import CategoryDropdown from "../components/CategoryDropdown";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
@@ -73,10 +74,7 @@ const CreateReviewPage = () => {
     };
 
     try {
-      await axios.post(
-        "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews/create/",
-        reviewData
-      );
+        await axios.post(`${apiUrl}/reviews/create/`, reviewData);
       // Reset form fields after successful submission
       setName("");
       setWebsite("");
@@ -198,8 +196,7 @@ const CreateReviewPage = () => {
                 </FormControl>
                 <FormControl>
                   <FormLabel>Images (comma-separated URLs)</FormLabel>
-                  <Input
-                    type="text"
+                  <Textarea
                     value={images.join(", ")}
                     onChange={handleImageChange}
                     placeholder="Enter comma-separated image URLs"
