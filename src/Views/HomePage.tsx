@@ -76,7 +76,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Flex>
-        Copy code
+        
         {/* Favorite Restaurants Section */}
         <Box width="100%" textAlign="center" mb={12}>
           <Heading as="h2" size="xl" mb={6}>
