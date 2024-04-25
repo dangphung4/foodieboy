@@ -8,6 +8,16 @@ import { useColorMode } from "@chakra-ui/react";
 import { RestaurantCard } from "../components/RestaurantCard";
 import { SetStateAction, useState } from "react";
 
+/**
+ * Restaurant list page
+ * This is the page where the user can see a list of restaurants
+ * @returns {React.ReactElement} The restaurant list page
+ */
+
+// TODO I will need to purge a lot of these fields bc honestly theres way too many
+// TODO migrate this to db and postresql
+// TODO add href to review page, review edit page and review create page
+// TODO rename this to reviews, restaurant is not correct
 const RestaurantListPage = () => {
   const { colorMode } = useColorMode();
   const linkColor = colorMode === "dark" ? "orange.300" : "blue.500";
@@ -34,6 +44,8 @@ const RestaurantListPage = () => {
         <Heading as="h1" size="xl" mb={4}>
           Restaurant Catalog
         </Heading>
+
+        {/* TODO I will need to purge a lot of these fields bc honestly theres way too many */}
         <Select placeholder="Select category" onChange={handleCategoryChange} mb={8} >
           <option value="All">All</option>
           <option value="American">American</option>
