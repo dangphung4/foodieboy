@@ -22,7 +22,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleExploreClick = () => {
-    navigate("/food");
+    navigate("/foods");
   };
 
   return (
