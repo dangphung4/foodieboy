@@ -26,7 +26,6 @@ import { sliderSettings } from "./types/SliderSettings";
  * @param {RestaurantCardProps} props - The properties of the restaurant card
  * @returns {React.ReactElement} The restaurant card
  */
-
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({
   restaurant,
   linkColor,

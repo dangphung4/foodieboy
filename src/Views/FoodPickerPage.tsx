@@ -20,6 +20,11 @@ import StarRating from "../components/StarRating";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+/**
+ * Food picker page
+ * This is the page where the user can pick a food item
+ * @returns {React.ReactElement} The food picker page
+ */
 const FoodPickerPage: React.FC = () => {
   const { colorMode } = useColorMode();
   const linkColor = colorMode === "dark" ? "orange.300" : "blue.500";
@@ -33,6 +38,11 @@ const FoodPickerPage: React.FC = () => {
     setSelectedRestaurant(foods[randomIndex]);
   };
 
+  /**
+   * Next image
+   * This function will go to the next image
+   * TODO potentially could try and have swipe instead of pressing next image, not sure why i couldnt get it to work on this page...
+   */
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
       selectedRestaurant
@@ -40,7 +50,11 @@ const FoodPickerPage: React.FC = () => {
         : 0
     );
   };
-
+  /**
+   * Previous image
+   * This function will go to the Previous image
+   * TODO potentially could try and have swipe instead of pressing next image, not sure why i couldnt get it to work on this page...
+   */
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
       selectedRestaurant

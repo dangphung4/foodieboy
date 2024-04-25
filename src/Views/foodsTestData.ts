@@ -1,3 +1,11 @@
+/**
+ * Hardcoded data for the foods page
+ * TODO the goal is to migrate to a database instead of staticaly hosting this data
+ * @constant
+ * @type {Array}
+ * @default
+ * @module src/Views/foodsTestData
+ */
 export const foods = [
   {
     id: 1,
