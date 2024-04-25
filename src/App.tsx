@@ -38,7 +38,7 @@ function App() {
             Restaurants
           </Link>
           <Link as={RouterLink} to="/food" marginRight="4">
-            Randomizer
+            RandomReview
           </Link>
           {isAdmin && (
             <Link as={RouterLink} to="/create-review" marginRight="4">
