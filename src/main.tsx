@@ -5,6 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { ColorModeScript } from "@chakra-ui/react";
 import FoodieBoyTheme from "./theme.tsx";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { AuthProvider } from "./context/AuthContext.tsx";
 
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
@@ -18,10 +19,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         clientId={clientId}
         cacheLocation="localstorage"
         authorizationParams={{
-          redirect_uri: window.location.origin
+          redirect_uri: window.location.origin,
         }}
       >
+        <AuthProvider>
           <App />
+        </AuthProvider>
       </Auth0Provider>
     </ChakraProvider>
   </React.StrictMode>
