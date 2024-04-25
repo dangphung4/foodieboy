@@ -3,13 +3,11 @@ import AnimatedRoutes from "./AnimatedRoutes";
 import ThemeToggleIcon from "./components/ThemeToggleIcon";
 import { BrowserRouter as Router, Link as RouterLink } from "react-router-dom";
 import AuthenticationButton from "./components/auth/AuthenticationButton";
-import { useAuth0 } from "@auth0/auth0-react"; 
 import { useAuth } from "./context/AuthContext";
 
 function App() {
-  const { user, isAuthenticated } = useAuth0();
   // TODO get the role to work from auth 0, ill just make this super janky for now and ahve emails.
-
+  // right now this is with isAdmin, which is honestly just a manual check for now.
   const {isAdmin} = useAuth();
 
   return (
