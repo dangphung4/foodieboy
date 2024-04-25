@@ -3,7 +3,6 @@ import { AnimatePresence } from "framer-motion";
 import HomePage from "./Views/HomePage";
 import FoodPickerPage from "./Views/FoodPickerPage";
 import RestaurantListPage from "./Views/RestaurantListPage";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
