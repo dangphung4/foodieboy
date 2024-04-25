@@ -33,12 +33,23 @@ Follow these steps to get your local development environment up and running:
      ```
    - Replace `your_auth0_domain` and `your_auth0_client_id` with your actual Auth0 project domain URL and Client key.
 
-4. Open up a terminal and navigate to the Server Directory, and run the express app:
+
+
+4. Open up a terminal and navigate to the Server Directory, and run the express app after setting up another .env:
+   - Create a `.env` file in the Server root.
+   - Add the following variables to the `.env` file:
+     ```
+     SUPABASE_URL=your_supabase_url
+     SUPABASE_KEY=your_supabase_key
+     ```
+   - Replace `your_supabase_url` and `your_supabase_key` with your actual Auth0 project domain URL and Client key.
+
+    Now run the server application.
     ```bash
     cd Server
     node app.js
     ```
-    This should launch a server at 'http://localhost:3000'.
+    This should launch a server at `http://localhost:3000`.
 
 5. Start the development server at the root directory in another terminal:
    ```bash
@@ -85,7 +96,7 @@ In the project directory, you can run the following scripts:
 ## Backend API Endpoints 🚀
 
 Swagger UI is added so you are able to view endpoints in the Server project. 
-You can do so by navigating to 'http://localhost:3000/api-docs'.
+You can do so by navigating to `http://localhost:3000/api-docs`.
 
 
 ## Built With 🛠️
