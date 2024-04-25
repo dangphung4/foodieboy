@@ -47,18 +47,22 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
               onClick={() => setShowReview(true)}
               style={{ cursor: "pointer" }}
             >
-              <Slider {...sliderSettings}>
-                {restaurant.images.map((image, index) => (
-                  <div key={index}>
-                    <Image
-                      src={image}
-                      alt={`${restaurant.name} image ${index + 1}`}
-                      h={200}
-                      objectFit="cover"
-                    />
-                  </div>
-                ))}
-              </Slider>
+              {restaurant.images && restaurant.images.length > 0 ? (
+                <Slider {...sliderSettings}>
+                  {restaurant.images.map((image, index) => (
+                    <div key={index}>
+                      <Image
+                        src={image}
+                        alt={`${restaurant.name} image ${index + 1}`}
+                        h={200}
+                        objectFit="cover"
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              ) : (
+                <Box h={200} bg="gray.100" />
+              )}
             </motion.div>
           ) : (
             <motion.div
@@ -69,13 +73,9 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
               variants={fadeVariants}
               layoutId={`card-container-${restaurant.id}`}
               onClick={() => setShowReview(false)}
-              style={{
-                cursor: "pointer",
-                padding: "1rem",
-                textAlign: "center",
-              }}
+              style={{ cursor: "pointer", padding: "1rem", textAlign: "center" }}
             >
-              <Text fontSize="lg">{restaurant.review}</Text>
+              <Text fontSize="lg">{restaurant.description}</Text>
             </motion.div>
           )}
         </AnimatePresence>
@@ -89,7 +89,7 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
               {restaurant.name}
             </Link>
           </Heading>
-          <Text>{restaurant.description}</Text>
+          <Text>{restaurant.review}</Text>
         </Box>
         <Flex p={4}>
           <Spacer />

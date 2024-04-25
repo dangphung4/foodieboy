@@ -37,12 +37,9 @@ function App() {
           <Link as={RouterLink} to="/foods" marginRight="4">
             Restaurants
           </Link>
-          <Link as={RouterLink} to="/food" marginRight="4">
-            RandomReview
-          </Link>
-          {isAdmin && ( // Conditionally render this link based on isAuthenticated
-            <Link as={RouterLink} to="/food" marginRight="4">
-              neednewidea
+          {isAdmin && (
+            <Link as={RouterLink} to="/create-review" marginRight="4">
+              Create Review
             </Link>
           )}
           {/* <Link as={RouterLink} to="/blogs" marginRight="4">
