@@ -15,6 +15,7 @@ import {
   Image,
   Text,
   Link,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
@@ -29,14 +30,29 @@ const CreateReviewPage = () => {
   const [rating, setRating] = useState(0);
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
+  const [ratingError, setRatingError] = useState(false);
 
   const handleImageChange = (e) => {
     const urls = e.target.value.split(",").map((url) => url.trim());
     setImages(urls);
   };
 
+  const handleRatingChange = (value) => {
+    if (value <= 5) {
+      setRating(value);
+      setRatingError(false);
+    } else {
+      setRatingError(true);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (rating > 5) {
+      setRatingError(true);
+      return;
+    }
+
     const reviewData = {
       name,
       website,
@@ -61,6 +77,7 @@ const CreateReviewPage = () => {
       setRating(0);
       setCategory("");
       setLocation("");
+      setRatingError(false);
     } catch (error) {
       console.error("Error creating review:", error);
     }
@@ -88,6 +105,7 @@ const CreateReviewPage = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter the restaurant name"
                     required
                   />
                 </FormControl>
@@ -97,6 +115,7 @@ const CreateReviewPage = () => {
                     type="url"
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
+                    placeholder="Enter the restaurant website"
                   />
                 </FormControl>
                 <FormControl>
@@ -104,6 +123,7 @@ const CreateReviewPage = () => {
                   <Textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Enter a description of the restaurant"
                     required
                   />
                 </FormControl>
@@ -113,19 +133,34 @@ const CreateReviewPage = () => {
                     type="text"
                     value={images.join(", ")}
                     onChange={handleImageChange}
+                    placeholder="Enter comma-separated image URLs"
                   />
                 </FormControl>
-                <FormControl>
+                <FormControl isInvalid={ratingError}>
                   <FormLabel>Rating</FormLabel>
                   <Input
                     type="number"
                     step="0.1"
-                    min="0"
+                    min="1"
                     max="5"
                     value={rating}
-                    onChange={(e) => setRating(parseFloat(e.target.value))}
+                    onChange={(e) => {
+                      const value = parseFloat(e.target.value);
+                      if (value >= 1 && value <= 5) {
+                        setRating(value);
+                        setRatingError(false);
+                      } else {
+                        setRatingError(true);
+                      }
+                    }}
+                    placeholder="Enter a rating between 1 and 5"
                     required
                   />
+                  {ratingError && (
+                    <FormErrorMessage>
+                      Rating must be a decimal number between 1 and 5.
+                    </FormErrorMessage>
+                  )}
                 </FormControl>
                 <FormControl>
                   <FormLabel>Category</FormLabel>
@@ -133,6 +168,7 @@ const CreateReviewPage = () => {
                     type="text"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
+                    placeholder="Enter the restaurant category"
                     required
                   />
                 </FormControl>
@@ -142,6 +178,7 @@ const CreateReviewPage = () => {
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Enter the restaurant location"
                     required
                   />
                 </FormControl>
@@ -172,7 +209,7 @@ const CreateReviewPage = () => {
               <Text mt={2}>Category: {category}</Text>
               <Text>Location: {location}</Text>
               {website && (
-                <Link href={website} isExternal mt={2}>
+                <Link href={website} color="blue.400" isExternal mt={2}>
                   Visit Website
                 </Link>
               )}
