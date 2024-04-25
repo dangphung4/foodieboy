@@ -23,7 +23,8 @@ import { pageVariants, pageTransition } from "../components/types/framer";
 import StarRating from "../components/StarRating";
 import CategoryDropdown from "../components/CategoryDropdown";
 import axios from "axios";
-// TODO add review input
+import ReactMarkdown from "react-markdown";
+
 
 /**
  * Create review page
@@ -41,7 +42,7 @@ const CreateReviewPage = () => {
   const [description, setDescription] = useState("");
   const [review,setReview]= useState("");
   const [images, setImages] = useState<string[]>([]);
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState<number | null>(null);
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [ratingError, setRatingError] = useState(false);
@@ -55,9 +56,9 @@ const CreateReviewPage = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (rating > 5) {
-      setRatingError(true);
-      return;
+    if (rating !== null && rating > 5) {
+        setRatingError(true);
+        return;
     }
 
     const reviewData = {
@@ -179,7 +180,7 @@ const CreateReviewPage = () => {
                     step="0.1"
                     min="1"
                     max="5"
-                    value={rating}
+                    value={rating ?? ""}
                     onChange={(e) => {
                       const value = parseFloat(e.target.value);
                       if (value >= 1 && value <= 5) {
@@ -238,7 +239,7 @@ const CreateReviewPage = () => {
                   />
                 ))}
               </HStack>
-              <StarRating rating={rating} />
+            <StarRating rating={rating || 0} />
               <Text mt={2}>Category: {category}</Text>
               <Text>Location: {location}</Text>
               {website && (
