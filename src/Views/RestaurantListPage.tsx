@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Select } from "@chakra-ui/react";
+import { Box, Grid, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
 import "slick-carousel/slick/slick.css";

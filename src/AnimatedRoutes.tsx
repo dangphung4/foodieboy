@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import HomePage from "./Views/HomePage";
-import FoodPickerPage from "./Views/FoodPickerPage";
 import RestaurantListPage from "./Views/RestaurantListPage";
 import CreateReviewPage from "./Views/CreateReviewPage";
 import { useAuth } from "./context/AuthContext";
@@ -20,7 +19,6 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/foods" element={<RestaurantListPage />} />
-        <Route path="/food" element={<FoodPickerPage />} />
         {isAdmin && (
           <Route path="/create-review" element={<CreateReviewPage />} />
         )}
