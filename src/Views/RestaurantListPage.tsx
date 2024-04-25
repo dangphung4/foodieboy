@@ -1,13 +1,13 @@
 import { Box, Grid, Heading, Select } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { pageVariants, pageTransition } from "../components/types/framer";
-import { foods } from "./foodsTestData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useColorMode } from "@chakra-ui/react";
 import { RestaurantCard } from "../components/RestaurantCard";
-import { SetStateAction, useState } from "react";
-
+import { SetStateAction, useState, useEffect } from "react";
+import axios from "axios";
+import { Restaurant } from "../components/types/Restaurant";
 /**
  * Restaurant list page
  * This is the page where the user can see a list of restaurants
@@ -18,20 +18,44 @@ import { SetStateAction, useState } from "react";
 // TODO migrate this to db and postresql
 // TODO add href to review page, review edit page and review create page
 // TODO rename this to reviews, restaurant is not correct
+
 const RestaurantListPage = () => {
   const { colorMode } = useColorMode();
   const linkColor = colorMode === "dark" ? "orange.300" : "blue.500";
 
+  const [restaurants, setRestaurants] = useState<Restaurant[]>();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const handleCategoryChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
+
+  const fetchRestaurants = async () => {
+    try {
+      const response = await axios.get(
+        "https://ystl4bvhi3.execute-api.us-east-1.amazonaws.com/dev/reviews"
+      );
+      console.log("response", response);
+      setRestaurants(response.data);
+    } catch (error) {
+      console.error("Error fetching restaurants:", error);
+    }
+  };
+  const handleCategoryChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSelectedCategory(event.target.value);
   };
 
-  const filteredFoods = selectedCategory === "All"
-    ? foods
-    : foods.filter(food => food.category === selectedCategory);
-    
+
+  const filteredRestaurants =
+    selectedCategory === "All"
+      ? restaurants ?? []
+      : restaurants?.filter(
+          (restaurant: { category: string }) =>
+            restaurant.category === selectedCategory
+        ) ?? [];
+
   return (
     <motion.div
       initial="initial"
@@ -46,7 +70,11 @@ const RestaurantListPage = () => {
         </Heading>
 
         {/* TODO I will need to purge a lot of these fields bc honestly theres way too many */}
-        <Select placeholder="Select category" onChange={handleCategoryChange} mb={8} >
+        <Select
+          placeholder="Select category"
+          onChange={handleCategoryChange}
+          mb={8}
+        >
           <option value="All">All</option>
           <option value="American">American</option>
           <option value="Korean">Korean</option>
@@ -67,7 +95,7 @@ const RestaurantListPage = () => {
           <option value="Nepalese">Nepalese</option>
         </Select>
         <Grid templateColumns="repeat(auto-fill, minmax(250px, 1fr))" gap={4}>
-        {filteredFoods.map((restaurant) => (
+          {filteredRestaurants.map((restaurant) => (
             <RestaurantCard
               key={restaurant.id}
               restaurant={restaurant}
