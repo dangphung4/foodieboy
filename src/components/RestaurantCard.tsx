@@ -18,6 +18,15 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { sliderSettings } from "./types/SliderSettings";
 
+/**
+ * Restaurant card
+ * This is a card that displays a restaurant and its information
+ * TODO will probably change out resturaunt into review, as naming is not correct here
+ * @see https://chakra-ui.com/docs/layout/grid
+ * @param {RestaurantCardProps} props - The properties of the restaurant card
+ * @returns {React.ReactElement} The restaurant card
+ */
+
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({
   restaurant,
   linkColor,
