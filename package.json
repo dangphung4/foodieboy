@@ -20,6 +20,7 @@
     "@saas-ui/react": "^2.8.1",
     "@saas-ui/theme-glass": "^0.5.5",
     "@supabase/supabase-js": "^2.42.5",
+    "axios": "^1.6.8",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "framer-motion": "^10.18.0",

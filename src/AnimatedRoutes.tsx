@@ -3,8 +3,8 @@ import { AnimatePresence } from "framer-motion";
 import HomePage from "./Views/HomePage";
 import FoodPickerPage from "./Views/FoodPickerPage";
 import RestaurantListPage from "./Views/RestaurantListPage";
-
-
+import CreateReviewPage from "./Views/CreateReviewPage";
+import { useAuth } from "./context/AuthContext";
 
 /**
  * Animated routes
@@ -13,6 +13,7 @@ import RestaurantListPage from "./Views/RestaurantListPage";
  */
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const { isAdmin } = useAuth();
 
   return (
     <AnimatePresence mode="wait">
@@ -20,6 +21,9 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/foods" element={<RestaurantListPage />} />
         <Route path="/food" element={<FoodPickerPage />} />
+        {isAdmin && (
+          <Route path="/create-review" element={<CreateReviewPage />} />
+        )}
 
         {/*  Have this here to have authenticated routes */}
         {/*     <Route path="/food" element={
