@@ -124,31 +124,32 @@ const HomePage = () => {
               </Flex>
             </Box>
 
+            
+
             {/* Restaurant 2 */}
             <Box borderRadius="md" boxShadow="md" p={6}>
-              <Heading as="h3" size="lg" mb={4}>
-                CM Chicken
-              </Heading>
-              <Flex alignItems="center" mb={4}>
+              <Flex direction={["column", "row"]} alignItems="center" mb={4}>
                 <Image
                   src="cmchicken.jpg"
-                  alt="Restaurant 2"
-                  boxSize="200px"
+                  alt="CM Chicken"
+                  boxSize={["100px", "200px"]}
                   objectFit="cover"
-                  mr={6}
+                  mb={[4, 0]} // Add bottom margin on mobile only
+                  mr={[0, 6]} // Add right margin on desktop only
                   borderRadius="md"
                 />
-                <Box>
-                  <Text fontSize="lg" mb={2}>
-                    {/* Add a brief description of why you like this restaurant */}
+                <Box flex="1" textAlign={["center", "left"]}>
+                  <Heading as="h3" size="lg" mb={4}>
+                  CM Chicken
+                  </Heading>
+                  <Text fontSize={["sm", "lg"]} mb={2}>
                     <strong>
-                      I love fried chicken. If you can get tikkudak which is
+                    I love fried chicken. If you can get tikkudak which is
                       them smoking the chicken after deep frying it twice....
                       its wraps. PACK IT UP
                     </strong>
                   </Text>
                   <Text fontSize="md" color="blue.500" mb={2}>
-                    {/* Add the restaurant's website link */}
                     <a
                       href="https://www.cmchicken.us/"
                       target="_blank"
@@ -158,8 +159,7 @@ const HomePage = () => {
                     </a>
                   </Text>
                   <Text fontSize="md" fontWeight="bold">
-                    {/* Add your review or rating */}
-                    My Rating: 5/5
+                    <strong>My Rating: 5/5</strong>
                   </Text>
                 </Box>
               </Flex>
