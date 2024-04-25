@@ -1,7 +1,8 @@
 import express from "express";
 import config from "./config/index.js";
+import swaggerUi from 'swagger-ui-express';
 import reviewsRouter from "./routes/reviews.js";
-
+import swaggerSpecs from './config/swagger.js';
 
 /**
  * Initializes the Express app
@@ -11,6 +12,10 @@ import reviewsRouter from "./routes/reviews.js";
 const app = express();
 
 app.use(express.json());
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
 
 /**
  * Adds routing to express app

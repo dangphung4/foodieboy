@@ -84,7 +84,8 @@ In the project directory, you can run the following scripts:
 
 ## Backend API Endpoints 🚀
 
-I plan to add Swagger Docs to this... someday...
+Swagger UI is added so you are able to view endpoints in the Server project. 
+You can do so by navigating to 'http://localhost:3000/api-docs'.
 
 
 ## Built With 🛠️
