@@ -4,6 +4,13 @@ import HomePage from "./Views/HomePage";
 import FoodPickerPage from "./Views/FoodPickerPage";
 import RestaurantListPage from "./Views/RestaurantListPage";
 
+
+
+/**
+ * Animated routes
+ * These are routes that will be used to source the bulk of the application
+ * @returns {JSX.Element}
+ */
 const AnimatedRoutes = () => {
   const location = useLocation();
 
